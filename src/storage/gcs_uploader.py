@@ -6,17 +6,17 @@ import logging
 from typing import Optional
 import io
 import os
-#from src.config.settings import settings
+from src.config.settings import settings
 
 logger = logging.getLogger(__name__)
 
 class GCSUploader:
     def __init__(self, location: str = "us-east1"):
         self.client = storage.Client()
-        #self.bucket_name = settings.GCS_BUCKET - descomentar quando subir
-        from dotenv import load_dotenv
-        load_dotenv()
-        self.bucket_name = os.getenv("GCS_BUCKET")
+        self.bucket_name = settings.GCS_BUCKET
+        #from dotenv import load_dotenv
+        #load_dotenv()
+        #self.bucket_name = os.getenv("GCS_BUCKET")
         self.bucket = self._get_or_create_bucket(location)
         
 
@@ -29,8 +29,8 @@ class GCSUploader:
         """Create bucket if not exists"""
         existing_buckets = [b.name for b in self.client.list_buckets()]
         if self.bucket_name in existing_buckets:
-            #logger.info(f"Bucket '{self.bucket_name}' already exists.") #DESCOMENTAR
-            print(f"Bucket '{self.bucket_name}' already exists.")
+            logger.info(f"Bucket '{self.bucket_name}' already exists.") #DESCOMENTAR
+            #print(f"Bucket '{self.bucket_name}' already exists.")
             return self.client.bucket(self.bucket_name)
         try:
             bucket = self.client.bucket(self.bucket_name)

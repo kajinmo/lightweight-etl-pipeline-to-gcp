@@ -19,3 +19,64 @@ Project Structure
 
 Setup
 - Installation....
+
+Steps
+2-data_processing/data_validator: make adjustments to no break code when not surpass validation
+3-storage/bigquery_loader: maybe use google storage first, then in next step use bigquery
+create .env
+4-orchestration/pipeline_runner
+4-orchestration/scheduler
+5-dashboard/streamlit_app
+
+-------------
+ Passo a Passo: Criar e usar uma Service Account no Google Cloud
+1. Acesse o Console do Google Cloud
+Vá para:
+👉 https://console.cloud.google.com/
+
+2. Selecione ou crie um projeto
+No topo da tela, clique no seletor de projeto e:
+
+Crie um novo projeto (ex: meu-projeto-dados)
+ou
+
+Escolha um já existente.
+
+3. Habilite a API do Google Cloud Storage
+Acesse:
+👉 https://console.cloud.google.com/apis/library/storage.googleapis.com
+
+Clique em "Ativar" se ainda não estiver ativada.
+
+4. Crie uma Service Account
+Vá para:
+👉 https://console.cloud.google.com/iam-admin/serviceaccounts
+
+Clique em "+ Criar Conta de Serviço"
+
+Preencha os campos:
+
+Nome: servico-dados
+
+ID da conta de serviço: (deixe o que ele gerar)
+
+Clique em Criar e continuar
+
+Conceda as permissões:
+
+Papel: Storage Admin (isso permite ler e escrever no bucket)
+
+Clique em Continuar e depois Concluir
+
+5. Crie uma chave JSON para a Service Account
+Na lista de contas de serviço, clique sobre a conta que acabou de criar.
+
+Vá até a aba Chaves.
+
+Clique em "Adicionar chave" → "Criar nova chave"
+
+Escolha o tipo JSON
+
+Clique em Criar – o download do arquivo .json começará automaticamente.
+
+📁 Guarde esse arquivo com segurança! Ele é sua credencial.

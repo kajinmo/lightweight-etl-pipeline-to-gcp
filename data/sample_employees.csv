@@ -1,0 +1,101 @@
+employee_id,first_name,last_name,email,phone,ssn,department,position,salary,hire_date,street_address,city,state,zip_code,manager_id,performance_rating,data_source
+CSV000001,Janice,Parks,christopher18@example.net,001-282-905-7122x7582,393-49-9641,Operations,Senior,98748,2017-05-23,866 Foster Loop,South Donaldburgh,Massachusetts,14037,,Good,csv
+CSV000002,Robin,Kane,fhansen@example.com,900.581.0632,244-25-1376,HR,Associate,80217,2022-11-27,9092 Marshall Squares,Kathrynhaven,Iowa,62497,CSV000001,Needs Improvement,csv
+CSV000003,Deborah,Summers,myersjessica@example.net,+1-396-941-9939x18318,601-29-2101,Sales,Associate,148482,2020-06-15,458 Wright Shores Apt. 198,Lake Travisfort,Virginia,97146,CSV000001,Satisfactory,csv
+CSV000004,Christina,Simmons,fodonnell@example.org,468-911-7100x0391,891-56-3575,Operations,Director,55493,2021-08-30,1466 Julia Trail,New Robert,Alaska,47465,CSV000001,Needs Improvement,csv
+CSV000005,Julian,Parker,kingkatie@example.com,+1-897-251-6637,709-59-6881,Operations,Lead,106069,2019-05-06,9712 Nguyen Turnpike,Cartershire,Oklahoma,91528,CSV000001,Satisfactory,csv
+CSV000006,Anita,Carpenter,johnathan99@example.org,(988)436-0822,458-02-8796,Operations,Senior,75320,2023-03-23,646 Malone Port,Josephtown,Arizona,73721,CSV000001,Good,csv
+CSV000007,Nicolas,Briggs,ashleygreen@example.org,001-948-899-1848x831,581-94-4097,Marketing,Director,75947,2019-12-25,321 Zachary Divide Apt. 884,West Katherine,New Mexico,45470,CSV000001,Excellent,csv
+CSV000008,Jeffery,Lopez,margaretsmith@example.com,(919)879-9084x775,025-84-1034,Marketing,Director,139720,2017-08-30,59590 Fowler Spring,Hebertfurt,Connecticut,20327,CSV000001,Good,csv
+CSV000009,Brianna,Miller,kennethmorgan@example.net,+1-241-920-5690,266-43-3711,Operations,Associate,145713,2019-04-24,957 Walsh Branch Apt. 776,Port Regina,North Carolina,82083,CSV000001,Needs Improvement,csv
+CSV000010,Tracy,Fox,gilesjennifer@example.com,827-244-0574x165,444-70-0769,Marketing,Manager,46296,2020-02-05,342 Burns Oval Suite 282,New Rhondaville,Louisiana,93958,CSV000001,Good,csv
+CSV000011,Joshua,Simmons,reneenicholson@example.com,(203)212-1819x42077,146-52-6242,Operations,Director,125234,2020-08-16,293 Lance Estates,Joshuaview,Louisiana,32217,CSV000001,Needs Improvement,csv
+CSV000012,Melinda,Rhodes,brianknox@example.com,320-350-1491x64366,744-40-5938,Operations,Associate,98426,2018-05-08,98711 Sarah Glen Apt. 164,Mccallfort,Montana,98668,CSV000001,Needs Improvement,csv
+CSV000013,Sean,Holmes,jameswilliams@example.com,(752)319-8744x6621,737-74-4760,Operations,Associate,50087,2024-08-06,7876 Everett Roads Suite 790,Jonesville,Washington,04902,CSV000001,Excellent,csv
+CSV000014,Luis,Lawson,odiaz@example.org,(719)595-3034x82766,785-62-0685,HR,Lead,56143,2019-10-20,23606 Sheila Lakes Suite 091,South Daisyborough,New Jersey,76961,CSV000001,Needs Improvement,csv
+CSV000015,James,Duncan,edwardsrodney@example.net,955.906.4719x054,138-35-8734,HR,Senior,146369,2017-11-25,3626 Suzanne Bridge Suite 194,Jamesfort,Wyoming,34153,CSV000001,Satisfactory,csv
+CSV000016,Linda,Smith,vbennett@example.com,667.743.3454,421-34-0480,Marketing,Associate,88821,2019-06-30,684 Bennett Crossing,Garybury,Delaware,13102,CSV000001,Good,csv
+CSV000017,Pamela,Nunez,kimberlygreen@example.com,294.579.3644x64215,323-74-0263,Sales,Senior,59242,2020-02-01,103 Samantha Bypass Apt. 253,West Taylor,Maine,49863,CSV000001,Satisfactory,csv
+CSV000018,Sabrina,Cox,castillocheryl@example.net,741-537-6461,843-96-1028,Engineering,Director,119891,2024-05-22,20505 Diaz Loop,Lake Johnport,Wyoming,89978,CSV000001,Needs Improvement,csv
+CSV000019,Joan,Cummings,mackenzie45@example.com,+1-339-722-1413,246-66-2403,Engineering,Manager,79884,2016-12-23,578 Wise Ports Apt. 720,Lake Kim,North Carolina,03437,CSV000001,Excellent,csv
+CSV000020,Laura,Thomas,georgeking@example.net,2924395528,634-20-4806,Engineering,Associate,105948,2020-08-04,5110 Seth Course Apt. 864,Schaefermouth,Washington,03069,CSV000001,Needs Improvement,csv
+CSV000021,Jason,Hoffman,weissbeth@example.org,219-470-8125x4851,334-49-0556,Operations,Junior,52836,2021-03-31,9417 Dawn Brooks,Dixonberg,California,06366,CSV000001,Needs Improvement,csv
+CSV000022,Yvonne,Morgan,martinezcraig@example.net,(641)531-0773,782-94-0060,HR,Manager,104582,2016-01-18,891 Jason Camp Apt. 079,Katherineberg,Michigan,02827,CSV000001,Satisfactory,csv
+CSV000023,Katherine,Ortiz,michaelhall@example.org,(342)267-6675,709-04-1673,Operations,Senior,147969,2024-01-17,05546 Teresa Gardens Apt. 613,Kathyfurt,Maine,01155,CSV000001,Needs Improvement,csv
+CSV000024,Lindsay,Franklin,garciahaley@example.net,001-467-409-5509x151,454-87-3557,Marketing,Junior,135686,2021-07-15,4061 Guzman Plains,East Alisonberg,Utah,19516,CSV000002,Satisfactory,csv
+CSV000025,Gregory,Allison,schneidereric@example.org,(675)554-5448,732-07-5683,Finance,Senior,50055,2018-01-16,0844 Robert Union,Austinmouth,New Hampshire,78468,CSV000002,Good,csv
+CSV000026,Eric,Hall,lynn54@example.com,(256)704-6665x0124,491-87-5753,Marketing,Junior,75505,2021-08-13,55492 Ayala Shoals,Collinschester,Kentucky,79057,CSV000002,Needs Improvement,csv
+CSV000027,Jennifer,Sullivan,uwalsh@example.com,001-217-339-3806x7317,513-25-8520,Finance,Director,73051,2017-04-27,7783 Sarah Greens,North Christopherside,Missouri,57670,CSV000001,Excellent,csv
+CSV000028,Nancy,Melendez,xdiaz@example.org,679-699-9512x0001,174-23-4790,Marketing,Junior,91539,2020-06-02,6332 Daniels Cape,Kellyview,Kentucky,20468,CSV000002,Excellent,csv
+CSV000029,Rhonda,James,frederick10@example.org,971-716-8299,500-35-4727,Finance,Junior,149526,2016-07-08,2274 Watson Valley,Conleyfort,South Dakota,54778,CSV000001,Satisfactory,csv
+CSV000030,Joshua,White,nicolas27@example.org,6056956732,138-63-8792,Marketing,Junior,135633,2018-05-23,1542 Sharp Passage Suite 247,North Denisestad,Florida,53048,CSV000001,Satisfactory,csv
+CSV000031,Anna,Horton,moorechristopher@example.com,001-755-999-7801x53301,797-18-9785,Marketing,Manager,73027,2020-05-10,2886 Miranda Road,New Veronicamouth,Florida,13398,CSV000002,Good,csv
+CSV000032,Denise,Pittman,brownsteven@example.org,(849)770-1377,214-38-9212,Engineering,Director,74033,2024-02-15,92061 Harris Expressway,Lake Adrian,Wisconsin,04474,CSV000001,Excellent,csv
+CSV000033,Jose,Robinson,hansonevan@example.org,2725924798,369-07-3955,Engineering,Junior,62144,2024-10-28,581 Lauren Land Suite 137,New Josephfort,Louisiana,64897,CSV000001,Needs Improvement,csv
+CSV000034,Amber,Miles,walshderek@example.net,6957541834,817-66-3014,Finance,Associate,46599,2016-10-17,711 Joshua Prairie Apt. 727,Natalieside,Pennsylvania,95007,CSV000001,Satisfactory,csv
+CSV000035,Nicholas,Matthews,woodjennifer@example.com,(299)486-2730,474-97-1690,Engineering,Lead,100999,2017-08-10,3343 Cochran Forge Apt. 325,New Timothyton,Ohio,91907,CSV000001,Good,csv
+CSV000036,Heather,Best,debragordon@example.net,822-953-3679x8835,559-99-7256,HR,Senior,106407,2019-12-05,17500 Alisha Ways Suite 969,Port Jonathantown,Delaware,83417,CSV000002,Excellent,csv
+CSV000037,Hannah,Weaver,halljoseph@example.org,419.918.2821x932,252-01-1683,Operations,Senior,81172,2018-08-27,0329 Perez Valleys Suite 644,Port Dawn,Michigan,03795,CSV000002,Excellent,csv
+CSV000038,Jennifer,Rice,hpeterson@example.net,001-625-638-7675,295-48-0370,HR,Junior,145712,2019-01-25,90210 Sara Parks,West Harold,Ohio,07902,CSV000002,Needs Improvement,csv
+CSV000039,Jeremy,Blackwell,michelle78@example.org,(871)431-7651,567-20-0840,Sales,Lead,117166,2017-07-06,4885 Mann Terrace Suite 808,Port Jeremyport,Michigan,89679,CSV000001,Needs Improvement,csv
+CSV000040,Michael,Soto,rodriguezclayton@example.org,(912)443-5039,461-65-6683,Engineering,Manager,96399,2016-09-23,0481 Cunningham Port,North Rachelland,Vermont,57865,CSV000001,Excellent,csv
+CSV000041,Benjamin,Miller,brooke59@example.org,001-247-647-9845x8198,507-99-9813,Finance,Senior,45081,2015-10-18,56329 Linda Mill Apt. 796,New Blake,New Mexico,77517,CSV000003,Excellent,csv
+CSV000042,Jeffery,Park,bowmanlauren@example.net,+1-954-444-2665x844,127-27-4743,Marketing,Junior,141278,2020-09-15,730 Keith Harbors,East Laurafort,Kansas,87784,CSV000004,Excellent,csv
+CSV000043,Stacy,Barton,julia24@example.net,+1-786-680-1518,326-78-3150,Marketing,Associate,99044,2023-03-14,48564 Cooper Forks Apt. 932,West Karen,Pennsylvania,85280,CSV000003,Excellent,csv
+CSV000044,Barry,Fisher,victoriahenderson@example.com,(811)391-6570,199-10-6896,Finance,Senior,149074,2015-12-02,5475 Ferguson Mission Apt. 895,Port Veronicaport,Nebraska,36901,CSV000003,Excellent,csv
+CSV000045,Mary,Hodges,kimberly54@example.com,777.724.1992x635,544-72-1059,Finance,Associate,59711,2018-07-14,0030 William Streets Apt. 078,Vargasside,Alaska,08803,CSV000002,Satisfactory,csv
+CSV000046,Ruben,Stevens,jenniferlopez@example.org,+1-663-566-4554,612-78-1400,HR,Director,129655,2020-04-09,585 Morrison Skyway,North Michael,Virginia,60936,CSV000002,Excellent,csv
+CSV000047,Michael,Coleman,kelsey51@example.org,(987)995-8455x2719,373-51-0176,Engineering,Director,62664,2020-03-19,9645 Julia Manor,Port Fernandobury,Delaware,26246,CSV000002,Satisfactory,csv
+CSV000048,Michael,Phelps,briggsmargaret@example.net,001-252-284-1905x324,110-19-4392,Engineering,Manager,60710,2025-05-02,41680 Scott Stravenue,East Michaelland,South Carolina,99858,CSV000001,Satisfactory,csv
+CSV000049,Nancy,Ochoa,dianahahn@example.com,8948989186,583-68-2937,Marketing,Lead,139617,2020-12-14,613 Villegas Springs,Nancyhaven,Colorado,88086,CSV000004,Good,csv
+CSV000050,David,Espinoza,matthew92@example.org,857.458.8056x01691,741-44-5364,Finance,Associate,77807,2016-01-28,507 Jaime Drives Suite 440,Alanchester,Ohio,04162,CSV000002,Satisfactory,csv
+CSV000051,Erin,Boyd,billschultz@example.net,899-902-8813x41558,838-42-5984,Marketing,Director,78241,2022-07-30,028 Christine Land,Victoriaberg,Connecticut,69714,CSV000005,Good,csv
+CSV000052,Kimberly,Cook,dnguyen@example.org,641-984-7700x57007,224-21-8702,HR,Junior,83317,2022-10-13,4206 Ashley Valley,Amandaville,Montana,03781,CSV000003,Excellent,csv
+CSV000053,John,Reynolds,uphelps@example.net,600-538-2773x89104,572-21-9314,Marketing,Senior,65096,2024-04-08,366 Kathleen Oval Apt. 377,West Dustinburgh,Arkansas,23734,CSV000003,Needs Improvement,csv
+CSV000054,Curtis,Greer,mpadilla@example.org,690-559-5333,161-86-1426,HR,Manager,52369,2021-03-05,6190 Hill Causeway,Lisaton,Oregon,28912,CSV000004,Excellent,csv
+CSV000055,Brent,Brooks,kingsara@example.net,(641)568-7199x474,817-92-3915,Engineering,Senior,146139,2019-11-11,1330 Jessica Crest Apt. 994,New Jennifermouth,New York,34198,CSV000003,Needs Improvement,csv
+CSV000056,Colleen,Hall,heather72@example.com,+1-478-281-2860x64373,643-58-8719,HR,Lead,55300,2020-04-06,24883 Jones Lodge Apt. 569,North Allison,Texas,79265,CSV000001,Needs Improvement,csv
+CSV000057,Joseph,Mclaughlin,david80@example.net,2302932530,027-72-6021,Operations,Associate,82402,2024-05-09,0392 Simpson Square,Haasberg,Ohio,65691,CSV000005,Satisfactory,csv
+CSV000058,Jody,Joyce,matthewmiller@example.org,(584)231-8574x989,860-24-8286,HR,Associate,138347,2016-10-19,0908 Kyle Stravenue,Huffburgh,Alaska,57646,CSV000005,Good,csv
+CSV000059,Cory,Hayes,lnixon@example.net,692-870-8487x3109,795-84-0457,Finance,Lead,89118,2018-02-05,21141 Young Ridges,East David,Connecticut,40341,CSV000005,Needs Improvement,csv
+CSV000060,Barbara,Hayden,ljohnson@example.net,(707)775-1146,042-48-9869,HR,Manager,114698,2022-12-04,912 Johns Cliff Suite 583,Johnton,Alaska,81997,CSV000005,Satisfactory,csv
+CSV000061,Zachary,Bailey,sball@example.net,001-293-305-1305x89130,610-09-3014,Engineering,Manager,101661,2017-05-17,80669 William Camp,Fitzgeraldland,South Dakota,80780,CSV000003,Needs Improvement,csv
+CSV000062,Donald,Williamson,daniel86@example.org,723-389-2270x536,203-60-5302,Sales,Junior,104984,2015-10-28,6437 Green Tunnel,Patriciahaven,Utah,30276,CSV000002,Excellent,csv
+CSV000063,Dana,Johnson,hickscarmen@example.org,658-479-9618x58092,409-64-2801,Operations,Lead,81933,2022-05-29,0311 Gregory Wells,Amandaville,Washington,37824,CSV000005,Good,csv
+CSV000064,Aaron,Durham,martinezbrad@example.net,+1-839-550-2777,590-03-4681,Marketing,Director,52209,2018-07-09,5775 Kristin Pass,South Jesse,Pennsylvania,60226,CSV000004,Good,csv
+CSV000065,Brent,Hall,vincentdillon@example.org,599.211.8339x034,163-66-7584,Marketing,Director,130152,2019-11-28,985 Evan Gardens,Robertoborough,Oregon,05324,CSV000002,Good,csv
+CSV000066,Andre,Cabrera,hferguson@example.com,+1-249-794-0543x186,469-78-6779,Engineering,Director,136058,2020-05-26,6399 Bender Meadows Apt. 908,Hartmanhaven,Utah,09936,CSV000005,Good,csv
+CSV000067,Angel,King,vgarcia@example.com,001-965-857-0828,240-24-1607,Sales,Associate,72814,2020-05-30,30919 Joel Isle Apt. 767,South Carolyn,Utah,78339,CSV000005,Needs Improvement,csv
+CSV000068,Thomas,Garcia,anndunn@example.com,548-558-0629,264-07-0991,HR,Associate,125429,2021-03-07,778 Herrera Extension,Staceyport,South Dakota,08297,CSV000002,Excellent,csv
+CSV000069,Kelly,Rodriguez,mccormicktodd@example.org,7167186873,685-08-7967,Engineering,Lead,62777,2016-07-31,3995 Mckenzie Summit,Amandaland,Florida,40381,CSV000005,Excellent,csv
+CSV000070,Laura,Campos,lopezpatricia@example.net,937-584-2700,076-51-0051,Finance,Lead,139520,2016-05-22,06818 Lisa Walk,Lake Timothyberg,Delaware,06386,CSV000006,Excellent,csv
+CSV000071,Jacob,Dorsey,brian77@example.com,213-349-8376x222,830-28-4334,Marketing,Senior,46093,2018-05-02,390 Sheppard Path Suite 467,Fuentesbury,Rhode Island,11078,CSV000001,Needs Improvement,csv
+CSV000072,Brianna,Lewis,wilcoxdaniel@example.com,001-294-649-3968,662-29-4512,HR,Associate,80582,2018-02-20,381 Hernandez Prairie,Washingtonmouth,Maryland,67302,CSV000007,Excellent,csv
+CSV000073,Stephanie,Tanner,adamsjason@example.com,+1-907-957-7954x201,890-83-9982,Operations,Associate,96433,2015-11-12,6641 Silva Crest,Janetfurt,Georgia,04325,CSV000001,Excellent,csv
+CSV000074,Gina,Gates,lisa35@example.org,(356)713-5027x52019,234-04-8515,Finance,Manager,118878,2025-07-07,2449 Hill Vista,East Lauramouth,Illinois,79510,CSV000005,Excellent,csv
+CSV000075,Karen,Abbott,davidgreene@example.org,001-341-817-9912x519,703-43-5018,Marketing,Junior,94344,2017-08-16,1333 Gonzales Shoals,Sullivanton,Tennessee,07580,CSV000001,Good,csv
+CSV000076,Antonio,Miller,richmondjames@example.net,+1-467-716-7123x4247,630-49-0989,Finance,Director,62075,2017-08-09,504 Patterson Estate Apt. 206,Cherylfurt,Indiana,10109,CSV000007,Good,csv
+CSV000077,Gregory,Long,alexandria53@example.org,4307575095,646-57-5139,HR,Junior,146469,2020-01-22,176 Kevin Mission,North Pamela,Nebraska,38473,CSV000006,Good,csv
+CSV000078,Megan,Tate,hnavarro@example.net,602.402.4715,741-21-3233,Operations,Manager,78814,2019-05-03,79017 Brittney Greens Suite 637,West Marieberg,Florida,63358,CSV000002,Needs Improvement,csv
+CSV000079,Dawn,Henson,vperkins@example.com,581-654-4652,727-74-2139,Sales,Director,53113,2023-10-08,44606 Joseph Plains,Andreaview,Maine,53489,CSV000005,Excellent,csv
+CSV000080,Kelly,Ibarra,jeremy46@example.net,569.511.6300,543-27-3734,Engineering,Senior,142670,2020-06-11,36731 Joshua Haven,North Joshua,Rhode Island,80683,CSV000004,Good,csv
+CSV000081,Ronald,Barton,mayerdonna@example.com,+1-402-859-4922x3925,856-05-7609,Sales,Associate,144442,2025-06-30,81818 James Corner Apt. 043,Justintown,Montana,91908,CSV000007,Satisfactory,csv
+CSV000082,Benjamin,Byrd,annamartinez@example.net,850-676-8045x90683,884-72-2682,Marketing,Associate,61874,2017-04-11,0633 Todd Road Apt. 668,West Michael,Tennessee,08486,CSV000008,Needs Improvement,csv
+CSV000083,Kimberly,Holt,ttaylor@example.net,(216)387-3697,060-50-5166,Operations,Director,61864,2024-07-20,897 Michael Pines Apt. 789,Lake Sheilashire,Maine,61114,CSV000006,Satisfactory,csv
+CSV000084,Todd,Pollard,sheila48@example.com,6769059675,025-57-4789,Marketing,Senior,64701,2016-01-01,1178 Jason Cape Apt. 354,Shaffermouth,Tennessee,75252,CSV000005,Good,csv
+CSV000085,Amy,Fields,qlucas@example.com,4506326607,629-76-3741,HR,Lead,131450,2019-01-16,6518 David Loaf Suite 739,East Tinafurt,Oklahoma,92154,CSV000002,Excellent,csv
+CSV000086,Kevin,Andrews,jeffrey34@example.com,+1-475-967-4623x573,607-66-1691,Sales,Senior,55122,2020-04-24,03895 Montoya Walks Suite 790,North Elizabeth,South Carolina,36868,CSV000005,Excellent,csv
+CSV000087,Andrew,Nolan,njohnson@example.net,568.456.8606x1320,197-82-1954,Engineering,Junior,117330,2023-03-11,25942 Sanchez Common,Knighthaven,Vermont,73364,CSV000001,Good,csv
+CSV000088,Erin,Murphy,cwillis@example.com,(667)780-5212,470-33-6085,Finance,Associate,80767,2021-02-10,346 Stephen Ports Apt. 108,North Thomas,Kentucky,02539,CSV000004,Excellent,csv
+CSV000089,Cathy,Goodman,simpsonmichael@example.org,001-813-966-2687x24097,802-02-2431,HR,Lead,146915,2024-10-04,7655 Cody Fords,Kristenshire,Virginia,54932,CSV000004,Excellent,csv
+CSV000090,Raven,Mcclure,jeff46@example.net,001-251-923-7406x2270,264-87-2588,Finance,Associate,111360,2018-03-27,923 Melissa Drives,Lake Jared,Nevada,13020,CSV000002,Good,csv
+CSV000091,Brandon,Garcia,zford@example.net,282.956.6883,057-06-8079,Marketing,Senior,86600,2024-02-27,6353 Elliott Loaf,New Amandamouth,New York,53083,CSV000008,Good,csv
+CSV000092,Jennifer,Gutierrez,lisatorres@example.net,(919)210-5392,429-90-6226,Sales,Senior,96326,2018-06-03,84328 Zachary Crossroad Suite 162,Lake Alan,Virginia,96653,CSV000009,Excellent,csv
+CSV000093,Robert,Walker,zachary71@example.com,910.589.0767,073-96-0938,Engineering,Associate,117783,2017-11-11,91928 Mahoney Cove Apt. 687,West Russellborough,Montana,95305,CSV000008,Satisfactory,csv
+CSV000094,Barry,Johnson,adam97@example.net,(507)458-6174x019,291-17-1038,Marketing,Junior,104648,2017-08-07,78235 Mark Circles,East Jasmineton,Alabama,14199,CSV000009,Good,csv
+CSV000095,Bradley,Cox,boyertracy@example.net,+1-487-932-0428,031-03-1854,Marketing,Junior,71100,2023-02-26,73683 Brian Lodge,Port Robinburgh,Alabama,72972,CSV000005,Good,csv
+CSV000096,Michelle,Garrett,ballcory@example.com,2032402111,453-59-2330,HR,Associate,53898,2025-02-17,52546 Linda Course,Jamesmouth,California,07029,CSV000006,Good,csv
+CSV000097,Michael,Williams,ricardokelley@example.net,(645)299-1006,028-53-2345,HR,Junior,40886,2018-04-10,860 Wolfe Branch Apt. 548,South Aaron,New Hampshire,00720,CSV000004,Good,csv
+CSV000098,Benjamin,Becker,frederickdaniel@example.org,516-598-4269,507-95-1317,Engineering,Director,54784,2020-04-15,15917 Cooper Club,Lake Benjamin,Alabama,67664,CSV000002,Good,csv
+CSV000099,Ryan,Williams,robertslaura@example.com,001-935-383-0610x525,099-60-0204,Sales,Lead,74378,2020-05-12,2823 Kyle Trace,Martinezborough,West Virginia,24335,CSV000005,Satisfactory,csv
+CSV000100,Karen,Frazier,jeremy91@example.org,674-286-7874,452-22-8891,Marketing,Junior,92643,2017-06-22,79093 Rachel Freeway Apt. 617,Richmondmouth,Louisiana,52422,CSV000004,Good,csv

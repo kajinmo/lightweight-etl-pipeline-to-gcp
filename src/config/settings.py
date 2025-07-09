@@ -19,8 +19,7 @@ class Settings:
     def validate_settings(cls):
         required_settings = [
             'GOOGLE_APPLICATION_CREDENTIALS',
-            'GCS_BUCKET_RAW',
-            'GCS_BUCKET_PROCESSED',
+            'GCS_BUCKET',
             'BIGQUERY_PROJECT_ID',
             'BIGQUERY_DATASET_ID',
             'BIGQUERY_TABLE_ID'

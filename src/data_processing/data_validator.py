@@ -2,7 +2,7 @@ import pandas as pd
 import logging
 from datetime import datetime
 from pydantic import BaseModel, field_validator, Field, ConfigDict
-from typing import Optional, List
+from typing import Optional, List, Dict, Any
 import re
 
 logger = logging.getLogger(__name__)
@@ -13,11 +13,11 @@ class EmployeeModel(BaseModel):
 
     employee_id: str = Field(..., min_length=6, max_length=10)
     first_name: str = Field(..., min_length=2, max_length=50)
-    last_name: str = Field(..., min_length=2, max_length=50)
+    last_name: str = Field(..., min_length=1, max_length=50)
     email: str
     department: str
     position: str
-    hire_date: str
+    hire_date: datetime
     data_source: str
     phone: Optional[str] = None
     ssn: Optional[str] = None
@@ -39,141 +39,84 @@ class EmployeeModel(BaseModel):
 
     @field_validator('hire_date')
     @classmethod
-    def validate_hire_date(cls, v: str) -> str:
+    def validate_hire_date(cls, v: datetime) -> datetime:
         """Valida formato de data"""
-        try:
-            pd.to_datetime(v)
-            return v
-        except Exception as e:
-            raise ValueError(f'Data inválida: {str(e)}')
+        if v > datetime.now():
+            raise ValueError('Data de contratação não pode estar no futuro')
+        return v
 
 class DataValidator:
     def __init__(self):
-        # Obtém campos obrigatórios do modelo
         self.required_fields = [
-            name for name, field in EmployeeModel.model_fields.items() 
-            if not field.is_required() or field.default is None
+            name for name, field in EmployeeModel.model_fields.items()
+            if field.is_required()
         ]
+        self.validation_errors = []
 
     def validate_dataframe(self, df: pd.DataFrame) -> tuple[bool, list[str]]:
-        """Valida um DataFrame usando o modelo Pydantic"""
-        logger.info("Iniciando validação de dados")
-        
+        logger.info("Starting data validation")
+
         if df.empty:
-            logger.error("DataFrame vazio fornecido para validação")
-            return False, ["DataFrame vazio"]
-        
+            logger.error("Empty DataFrame provided for validation")
+            return False, ["Empty DataFrame"]
+
         validation_issues = []
-        
-        # Verifica colunas obrigatórias
+
+        # Checks required columns
         missing_cols = [col for col in self.required_fields if col not in df.columns]
         if missing_cols:
-            msg = f"Colunas obrigatórias faltando: {missing_cols}"
+            msg = f"Missing required columns: {missing_cols}"
+            logger.error(msg)
             validation_issues.append(msg)
             return False, validation_issues
-        
-        # Valida cada registro
+
+        # Validates each record
         for idx, record in df.iterrows():
             try:
                 EmployeeModel.model_validate(record.to_dict())
             except Exception as e:
-                validation_issues.append(f"Linha {idx+1}: {str(e)}")
-        
-        # Verifica IDs duplicados
+                msg = f"Linha {idx + 1}: {str(e)}"
+                logger.warning(msg)
+                validation_issues.append(msg)
+
+        # Checks for duplicate IDs
         if 'employee_id' in df.columns and df['employee_id'].duplicated().any():
             dups = df['employee_id'].duplicated().sum()
-            validation_issues.append(f"IDs duplicados encontrados: {dups} casos")
-        
-        if not validation_issues:
-            logger.info("Validação concluída sem erros")
-            return True, []
-        
-        logger.warning(f"Validação encontrou {len(validation_issues)} problemas")
-        return False, validation_issues
-    
-    def clean_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Limpa e padroniza o DataFrame"""
-        logger.info("Iniciando limpeza de dados")
-        
-        if df.empty:
-            return df
-        
-        df_clean = df.copy()
-        
-        # Remove linhas completamente vazias
-        df_clean = df_clean.dropna(how='all')
-        
-        # Padroniza campos string
-        str_fields = [
-            name for name, field in EmployeeModel.model_fields.items() 
-            if field.annotation in (str, Optional[str])
-        ]
-        
-        for field in str_fields:
-            if field in df_clean.columns:
-                df_clean[field] = (
-                    df_clean[field]
-                    .astype(str)
-                    .str.strip()
-                    .str.title()
-                )
-        
-        # Padroniza e-mails
-        if 'email' in df_clean.columns:
-            df_clean['email'] = df_clean['email'].str.lower().str.strip()
-        
-        # Converte datas
-        if 'hire_date' in df_clean.columns:
-            df_clean['hire_date'] = pd.to_datetime(df_clean['hire_date'])
-        
-        # Adiciona metadados
-        df_clean['processed_at'] = datetime.now()
-        
-        logger.info(f"Limpeza concluída. Registros: {len(df_clean)}")
-        return df_clean
+            msg = f"Duplicate IDs found: {dups} casos"
+            logger.warning(msg)
+            validation_issues.append(msg)
 
-if __name__ == "__main__":
-    # Configuração do logging
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s'
-    )
+        if not validation_issues:
+            logger.info("Validation completed without errors")
+            return True, []
+
+        logger.warning(f"Validation found {len(validation_issues)} problems")
+        return False, validation_issues
+
+    def get_validation_summary(self) -> Dict[str, Any]:
+        """Get summary of validation results"""
+        return {
+            'total_errors': len(self.validation_errors),
+            'errors_by_source': self._group_errors_by_source(),
+            'common_errors': self._get_common_errors()
+        }
     
-    # Dados de teste
-    test_data = pd.DataFrame({
-        'employee_id': ['EMP001', 'EMP002', 'EMP003', 'INVALID'],
-        'first_name': ['John', 'Jane', 'Bob', ' '],
-        'last_name': ['Doe', 'Smith', 'Johnson', 'Missing'],
-        'email': ['john@example.com', 'jane@example.com', 'invalid-email', None],
-        'department': ['IT', 'HR', 'Finance', None],
-        'position': ['Developer', 'Manager', 'Analyst', None],
-        'hire_date': ['2020-01-15', '2021-02-28', '31/02/2023', 'not-a-date'],
-        'data_source': ['HR', 'HR', 'HR', None],
-        'phone': ['(11) 98765-4321', None, '1234567890', None]
-    })
+    def _group_errors_by_source(self) -> Dict[str, int]:
+        """Group errors by data source"""
+        source_errors = {}
+        for error in self.validation_errors:
+            source = error['source']
+            source_errors[source] = source_errors.get(source, 0) + 1
+        return source_errors
     
-    print("\n=== DADOS DE TESTE ===")
-    print(test_data)
-    
-    # Teste de validação
-    validator = DataValidator()
-    is_valid, issues = validator.validate_dataframe(test_data)
-    
-    print("\n=== RESULTADOS DA VALIDAÇÃO ===")
-    print(f"Válido: {'Sim' if is_valid else 'Não'}")
-    for issue in issues[:5]:  # Mostra no máximo 5 erros
-        print(f"- {issue}")
-    
-    # Teste de limpeza
-    if not is_valid:
-        print("\n=== APLICANDO LIMPEZA ===")
-        cleaned_data = validator.clean_dataframe(test_data)
+    def _get_common_errors(self) -> List[Dict[str, Any]]:
+        """Get most common validation errors"""
+        error_counts = {}
+        for error in self.validation_errors:
+            for validation_error in error['errors']:
+                error_msg = validation_error.get('msg', 'Unknown error')
+                error_counts[error_msg] = error_counts.get(error_msg, 0) + 1
         
-        print("\nDados limpos:")
-        print(cleaned_data)
-        
-        print("\n=== VALIDAÇÃO APÓS LIMPEZA ===")
-        is_valid, issues = validator.validate_dataframe(cleaned_data)
-        print(f"Válido após limpeza: {'Sim' if is_valid else 'Não'}")
-        for issue in issues:
-            print(f"- {issue}")
+        # Sort by frequency and return top 10
+        sorted_errors = sorted(error_counts.items(), key=lambda x: x[1], reverse=True)
+        return [{'error': error, 'count': count} for error, count in sorted_errors[:10]]

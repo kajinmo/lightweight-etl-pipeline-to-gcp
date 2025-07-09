@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "faker>=37.4.0",
+    "gcsfs>=2025.5.1",
     "google-cloud-bigquery>=3.34.0",
     "google-cloud-storage>=3.1.1",
     "openpyxl>=3.1.5",

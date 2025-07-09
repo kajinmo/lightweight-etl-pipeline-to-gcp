@@ -183,3 +183,4 @@ streamlit_app.py
 credentials/
 src-backup/
 tmp/
+teste_reader.py

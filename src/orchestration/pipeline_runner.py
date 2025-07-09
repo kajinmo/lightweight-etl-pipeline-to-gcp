@@ -148,24 +148,32 @@ class PipelineRunner:
                 df_raw = self.gcs_uploader.download_data(filename)
                 
                 # Validate data
-                df_validated = self.data_validator.validate_dataframe(df_raw, source_name)
-                
-                # TODO: Apply data masking here
-                df_processed = df_validated  # For now, just use validated data
-                # df_masked = self.data_masker.mask_data(df_validated, source_name)
-                
+                is_valid, validation_issues = self.data_validator.validate_dataframe(df_raw)
+            
                 # Upload processed data
-                if not df_processed.empty:
-                    processed_filename = self.gcs_uploader.upload_processed_data(
-                        df_processed, source_name
+                if is_valid:
+                    df_validated = df_raw
+                else:
+                    logger.error("Validation failed. Details:")
+                    for issue in validation_issues:
+                        logger.error(f"- {issue}")
+                    df_df_validated = pd.DataFrame() # empty to avoid downstream errors
+                
+                if not df_validated.empty:
+                    # Validation only allows if all lines are correct
+                    # TODO: Apply data masking here
+                    # df_masked = self.data_masker.mask_data(df_processed, source_name)
+                    df_processed = df_validated
+                    processed_filename = self.gcs_uploader.upload_data(
+                        df=df_processed,
+                        data_type="processed",
+                        source_name=source_name
                     )
                     processed_files[source_name] = processed_filename
                     self.pipeline_stats['files_uploaded'].append(f"processed/{processed_filename}")
                     
                     # Update statistics
-                    self.pipeline_stats['total_valid_records'] += len(df_processed)
-                else:
-                    logger.warning(f"No valid records for {source_name} after processing")
+                    self.pipeline_stats['total_valid_records'] += len(df_processed)                
             
             # Update error statistics
             validation_summary = self.data_validator.get_validation_summary()
@@ -212,8 +220,8 @@ class PipelineRunner:
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)  # Configura o nível de log
+    logging.basicConfig(level=logging.INFO)
     runner = PipelineRunner()
     summary = runner.run_full_pipeline()
-    print("Resumo da execução da pipeline:")
+    print("Pipeline execution summary:")
     print(summary)

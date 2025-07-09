@@ -44,6 +44,10 @@ class GCSUploader:
     def upload_data(self, df: pd.DataFrame, data_type: str = "raw", source_name: str = None) -> str:
         """Uploads a DataFrame as Parquet for raw/ or processed/"""
         try:
+            # force zip_code as string for CSV data
+            if source_name == "csv" and "zip_code" in df.columns:
+                df["zip_code"] = df["zip_code"].astype(str)
+
             filename = self._generate_filename(source_name, data_type)
             blob = self.bucket.blob(filename)
             parquet_buffer = io.BytesIO()

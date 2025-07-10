@@ -15,7 +15,7 @@ from src.data_sources.csv_extractor import CSVDataExtractor
 from src.storage.gcs_uploader import GCSUploader
 from src.data_processing.data_masking import DataMasker
 from src.data_processing.data_validator import DataValidator
-#from src.bigquery.bigquery_loader import BigQueryLoader
+from src.bigquery.bigquery_loader import BigQueryLoader
 
 
 logger = logging.getLogger(__name__)
@@ -30,7 +30,7 @@ class PipelineRunner:
         # Initialize pipeline components
         self.gcs_uploader = GCSUploader()
         self.data_validator = DataValidator()
-        #self.bigquery_loader = BigQueryLoader()
+        self.bigquery_loader = BigQueryLoader()
         
         # Pipeline statistics
         self.pipeline_stats = {
@@ -62,8 +62,10 @@ class PipelineRunner:
             processed_files = self._process_data(raw_files)
             
             # Step 4: Load to BigQuery
-            #self._load_to_bigquery(processed_files)
-            
+            print("starting step4:load")
+            self._load_to_bigquery(processed_files)
+            print("finishing step4:load")
+
             # Finalize pipeline
             self.pipeline_stats['end_time'] = datetime.now()
             self.pipeline_stats['duration'] = (

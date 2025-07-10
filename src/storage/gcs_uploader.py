@@ -1,4 +1,6 @@
 import pandas as pd
+import pyarrow as pa
+import pyarrow.parquet as pq
 from google.cloud import storage
 from google.api_core.exceptions import Conflict
 from datetime import datetime
@@ -48,11 +50,25 @@ class GCSUploader:
             if source_name == "csv" and "zip_code" in df.columns:
                 df["zip_code"] = df["zip_code"].astype(str)
 
+            # to prevent problems for REQUIRED fields in BigQuery
+            required_fields = ['employee_id', 'first_name', 'last_name', 'email']
+            for col in required_fields:
+                if col in df.columns:
+                    df[col] = df[col].fillna("").astype(str).str.strip()
+                    df = df[df[col] != ""]
+            
+            # Check if there are still nulls left
+            assert df[required_fields].isnull().sum().sum() == 0, "Ainda há nulos em campos obrigatórios"
+
+            # Parquet with explicit schema to avoid erroneous inference
+            table = pa.Table.from_pandas(df, preserve_index=False)
+
+            parquet_buffer = io.BytesIO()
+            pq.write_table(table, parquet_buffer)
+            parquet_buffer.seek(0)
+
             filename = self._generate_filename(source_name, data_type)
             blob = self.bucket.blob(filename)
-            parquet_buffer = io.BytesIO()
-            df.to_parquet(parquet_buffer, index=False)
-            parquet_buffer.seek(0)
             blob.upload_from_string(parquet_buffer.read(), content_type='application/octet-stream')
             logger.info(f"{data_type.title()} data uploaded: gs://{self.bucket.name}/{filename}")
             return filename

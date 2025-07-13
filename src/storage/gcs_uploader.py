@@ -49,6 +49,11 @@ class GCSUploader:
             # force zip_code as string for CSV data
             if source_name == "csv" and "zip_code" in df.columns:
                 df["zip_code"] = df["zip_code"].astype(str)
+            
+            # Convert hire_date to date
+            if "hire_date" in df.columns:
+                df["hire_date"] = pd.to_datetime(df["hire_date"])
+                df["hire_date"] = df["hire_date"].dt.date
 
             # to prevent problems for REQUIRED fields in BigQuery
             required_fields = ['employee_id', 'first_name', 'last_name', 'email']

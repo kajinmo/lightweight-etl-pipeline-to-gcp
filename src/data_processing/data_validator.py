@@ -8,8 +8,8 @@ import re
 logger = logging.getLogger(__name__)
 
 class EmployeeModel(BaseModel):
-    """Modelo Pydantic v2 para validação de dados de funcionários"""
-    model_config = ConfigDict(extra='forbid')  # Bloqueia campos extras
+    """Pydantic Model for Employee Data Validation"""
+    model_config = ConfigDict(extra='forbid')  # Blocks extra fields
 
     employee_id: str = Field(..., min_length=6, max_length=10)
     first_name: str = Field(..., min_length=2, max_length=50)
@@ -32,17 +32,17 @@ class EmployeeModel(BaseModel):
     @field_validator('email')
     @classmethod
     def validate_email(cls, v: str) -> str:
-        """Valida formato de e-mail"""
+        """Validates email format"""
         if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', v):
-            raise ValueError('Formato de e-mail inválido')
+            raise ValueError('Invalid email format')
         return v.lower().strip()
 
     @field_validator('hire_date')
     @classmethod
     def validate_hire_date(cls, v: datetime) -> datetime:
-        """Valida formato de data"""
+        """Validates date format"""
         if v > datetime.now():
-            raise ValueError('Data de contratação não pode estar no futuro')
+            raise ValueError('Hiring date cannot be in the future')
         return v
 
 class DataValidator:
@@ -62,7 +62,7 @@ class DataValidator:
 
         validation_issues = []
 
-        # Checks required columns
+        # 1. Checks required columns
         missing_cols = [col for col in self.required_fields if col not in df.columns]
         if missing_cols:
             msg = f"Missing required columns: {missing_cols}"
@@ -70,6 +70,10 @@ class DataValidator:
             validation_issues.append(msg)
             return False, validation_issues
 
+        # 2. Checks for null values in required fields
+        null_check_issues = self._check_null_values(df)
+        validation_issues.extend(null_check_issues)
+          
         # Validates each record
         for idx, record in df.iterrows():
             try:
@@ -92,6 +96,22 @@ class DataValidator:
 
         logger.warning(f"Validation found {len(validation_issues)} problems")
         return False, validation_issues
+
+    def _check_null_values(self, df: pd.DataFrame) -> List[str]:
+        """Verifica valores nulos em campos obrigatórios"""
+        issues = []
+        
+        # Verifica nulos nos campos obrigatórios
+        null_counts = df[self.required_fields].isnull().sum()
+        
+        for field, count in null_counts.items():
+            if count > 0:
+                msg = f"Campo obrigatório '{field}' tem {count} valores nulos"
+                logger.error(msg)
+                issues.append(msg)
+        
+        return issues
+
 
     def get_validation_summary(self) -> Dict[str, Any]:
         """Get summary of validation results"""

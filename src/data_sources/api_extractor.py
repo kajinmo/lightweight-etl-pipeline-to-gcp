@@ -39,7 +39,7 @@ class APIDataExtractor:
                     'department': random.choice(departments),
                     'position': random.choice(positions),
                     'salary': random.randint(40000, 150000),
-                    'hire_date': datetime.now() - timedelta(days=random.randint(1, 3650)),
+                    'hire_date': (datetime.now() - timedelta(days=random.randint(1, 3650))).date(),
                     'street_address': user['address']['street'],
                     'city': user['address']['city'],
                     'state': user['address']['zipcode'][:2],  # Mock state from zipcode

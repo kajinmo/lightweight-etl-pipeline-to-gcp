@@ -21,12 +21,21 @@ Setup
 - Installation....
 
 Steps
-2-data_processing/data_validator: make adjustments to no break code when not surpass validation
-3-storage/bigquery_loader: maybe use google storage first, then in next step use bigquery
-create .env
+bigquery/bigquery_loader
+(arruamr schema)
 4-orchestration/pipeline_runner
 4-orchestration/scheduler
 5-dashboard/streamlit_app
+
+inserir no orquestrador:
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+python -m src.orchestration.pipeline_runner
+
+
+source .venv/Scripts/activate
+C:/Users/kajin/Downloads/workspace/lightweight-etl-pipeline-to-gcp/.venv/Scripts/python.exe -m src.orchestration.pipeline_runner
+
+
 
 -------------
  Passo a Passo: Criar e usar uma Service Account no Google Cloud

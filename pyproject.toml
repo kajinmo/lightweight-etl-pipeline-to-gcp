@@ -13,8 +13,14 @@ dependencies = [
     "pandas>=2.3.0",
     "pyarrow>=20.0.0",
     "pydantic>=2.11.7",
+    "pytest>=8.4.1",
     "python-dotenv>=1.1.1",
     "requests>=2.32.4",
     "schedule>=1.2.2",
     "setuptools>=80.9.0",
+    "taskipy>=1.14.1",
 ]
+
+[tool.taskipy.tasks]
+test = "pytest tests/ -v"
+run = "python -m src.orchestration.pipeline_runner"

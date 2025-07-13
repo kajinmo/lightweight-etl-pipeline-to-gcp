@@ -1,91 +1,158 @@
-# lightweight-etl-pipeline-to-gcp
+# Lightweight ETL Pipeline to GCP (without Airflow)
 
+An ETL (Extract, Transform, Load) pipeline that extracts employee data from multiple sources, masks sensitive information, and loads it into Google BigQuery. Designed for environments where Airflow is unavailable (due to permissions, infrastructure constraints, or complexity). It provides a no-frills, dependency-light way to define, schedule, and monitor ETL workflows using Python libraries.
 
-Python-based ETL pipeline orchestrator designed for environments where Airflow is unavailable (due to permissions, infrastructure constraints, or complexity). It provides a no-frills, dependency-light way to define, schedule, and monitor ETL workflows using Python libraries.
+<br>
 
-Objectives
+## Objectives
 - Works in Restricted Environments – No need for Airflow, Docker, or complex setups.
 - Easy to Deploy – Runs anywhere Python runs (even on locked-down servers).
 - Minimal Overhead – Perfect for small scale ETL needs.
 
-Features
-- Task Dependencies – Simple depends_on syntax for execution order.
-- Basic Retry Logic – Automatic retries for failed tasks.
-- Logging & Failure Alerts – Log to file and send email/Slack alerts (optional).
-- Flexible Scheduling – Works with schedule, APScheduler, or cron.
+<br>
 
-Project Structure
+## Project Structure
+```python
+project/
+├── src/
+│ ├── data_sources/ # Data extraction modules
+│ │ ├── api_extractor.py # API data extraction
+│ │ ├── csv_extractor.py # CSV file handling and generation
+│ │ └── faker_generator.py # Faker data generation
+│ │
+│ ├── storage/ # Storage operations
+│ │ └── gcs_uploader.py # Google Cloud Storage uploader
+│ │
+│ ├── data_processing/ # Data transformation
+│ │ ├── data_masking.py # Masking
+│ │ └── data_validator.py # Data quality validation
+│ │
+│ ├── big_query/ # BigQuery integration
+│ │ └── bigquery_loader.py # BigQuery data loader
+│ │
+│ ├── orchestration/ # Pipeline control
+│ │ └── pipeline_runner.py # Main pipeline executor
+│ │
+│ └── config/ # Configuration files
+│ ├── settings.py # Project settings
+│ └── credentials/ # GCP service account JSON files
+│
+├── test/ # Unit tests
+│ └── test_data_validator.py
+│
+├── .env.example # Environment variables template
+├── requirements.txt # Python dependencies
+└── README.md # This file
+```
 
+<br>
 
-Setup
-- Installation....
+## Project Architecture
+```mermaid
+graph LR
+    subgraph orchestration/pipeline_runner.py
+    direction LR
+    data_sources --> storage
+    storage --> data_processing
+    data_processing --> big_query
+    end
+```
 
-Steps
-bigquery/bigquery_loader
-(arruamr schema)
-4-orchestration/pipeline_runner
-4-orchestration/scheduler
-5-dashboard/streamlit_app
-
-inserir no orquestrador:
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-python -m src.orchestration.pipeline_runner
-
-
-source .venv/Scripts/activate
-C:/Users/kajin/Downloads/workspace/lightweight-etl-pipeline-to-gcp/.venv/Scripts/python.exe -m src.orchestration.pipeline_runner
-
-
+<br>
 
 -------------
- Passo a Passo: Criar e usar uma Service Account no Google Cloud
-1. Acesse o Console do Google Cloud
-Vá para:
-👉 https://console.cloud.google.com/
 
-2. Selecione ou crie um projeto
-No topo da tela, clique no seletor de projeto e:
+## Setup Instructions
+0. Prerequisites
+    - Python version > 3.12
+    - uv library (install with `pipx install uv` or `pip install uv`)
 
-Crie um novo projeto (ex: meu-projeto-dados)
-ou
+<br>
 
-Escolha um já existente.
+1. Clone the repository and change the directory
+```bash
+git clone https://github.com/kajinmo/lightweight-etl-pipeline-to-gcp
+cd lightweight-etl-pipeline-to-gcp
+```
 
-3. Habilite a API do Google Cloud Storage
-Acesse:
-👉 https://console.cloud.google.com/apis/library/storage.googleapis.com
+<br>
 
-Clique em "Ativar" se ainda não estiver ativada.
+2. Create a venv environment and install the dependencies with `uv`
+```bash
+uv sync
+```
 
-4. Crie uma Service Account
-Vá para:
-👉 https://console.cloud.google.com/iam-admin/serviceaccounts
+<br>
 
-Clique em "+ Criar Conta de Serviço"
+3. Activate the virtual environment
+```bash
+source .venv/Scripts/activate
+```
 
-Preencha os campos:
+<br>
 
-Nome: servico-dados
+4. Open VSCode
+```bash
+code .
+```
 
-ID da conta de serviço: (deixe o que ele gerar)
+<br>
 
-Clique em Criar e continuar
+5. Configure VSCode to use the virtual environment
 
-Conceda as permissões:
+- Open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS)
+- Search for "`Python: Select Interpreter`"
+- Choose the interpreter within the folder `.venv` (e.g., .venv/bin/python or .venv/Scripts/python.exe)
 
-Papel: Storage Admin (isso permite ler e escrever no bucket)
+<br>
 
-Clique em Continuar e depois Concluir
+6. Execution and Testing
+```bash
+# Start the orchestrator
+task run
 
-5. Crie uma chave JSON para a Service Account
-Na lista de contas de serviço, clique sobre a conta que acabou de criar.
+# Run tests locally
+task test
+```
 
-Vá até a aba Chaves.
 
-Clique em "Adicionar chave" → "Criar nova chave"
+## Step by Step: Create and Use a Service Account on Google Cloud
+1. Access the Google Cloud Console: https://console.cloud.google.com/
 
-Escolha o tipo JSON
+<br>
 
-Clique em Criar – o download do arquivo .json começará automaticamente.
+2. Open project picker (or press Ctrl+O) and create a project or select an existing one.
 
-📁 Guarde esse arquivo com segurança! Ele é sua credencial.
+<br>
+
+3. Enable the Google Cloud Storage API:
+- Go to https://console.cloud.google.com/apis/library/storage.googleapis.com
+- Click "Enable" if it isn't already enabled.
+
+<br>
+
+4. Create a Service Account:
+- Go to https://console.cloud.google.com/iam-admin/serviceaccounts
+- Click "+ Create Service Account"
+- Fill in the fields:
+    - Name: (leave whatever you want)
+    - Service Account ID: (leave whatever it generates)
+    - Click Create and Continue
+- Grant permissions:
+    - Role: Storage Admin
+    - Role: BigQuery Admin
+- Click Continue and then Finish
+
+<br>
+
+5. Create a JSON key for the Service Account
+- In the list of service accounts, click the account you just created.
+- Go to the Keys tab.
+- Click "Add Key" → "Create New Key"
+- Choose the JSON type
+- Click Create – the .json file will start downloading automatically.
+- Place this file in the project's `config/credentials/` folder
+
+<br>
+
+6. Create and modify the parameters in the .env file

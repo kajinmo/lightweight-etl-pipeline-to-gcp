@@ -175,12 +175,7 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 
-code.txt
-bigquery_loader_old.py
+
 scheduler.py
-run_pipeline.py
-streamlit_app.py
 credentials/
-src-backup/
 tmp/
-teste_reader.py

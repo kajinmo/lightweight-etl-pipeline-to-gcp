@@ -130,7 +130,9 @@ code .
 
 <br>
 
-6. Execution and Testing
+6. Follow the "Step by Step: Create and Use a Service Account on Google Cloud" guide below to configure your GCP
+
+7. Execution and Testing
 ```bash
 # Start the orchestrator
 task run
@@ -180,10 +182,3 @@ task test
 <br>
 
 6. Create and modify the parameters in the .env file
-
-<br>
-
-7. Iin the bash terminal run the orchestrator with the following command
-```bash
-python -m orchestration.pipeline_runner
-```

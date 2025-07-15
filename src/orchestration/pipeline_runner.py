@@ -30,6 +30,7 @@ class PipelineRunner:
         # Initialize pipeline components
         self.gcs_uploader = GCSUploader()
         self.data_validator = DataValidator()
+        self.data_masker = DataMasker()
         self.bigquery_loader = BigQueryLoader()
         
         # Pipeline statistics
@@ -159,13 +160,13 @@ class PipelineRunner:
                     logger.error("Validation failed. Details:")
                     for issue in validation_issues:
                         logger.error(f"- {issue}")
-                    df_df_validated = pd.DataFrame() # empty to avoid downstream errors
+                    df_validated = pd.DataFrame() # empty to avoid downstream errors
                 
                 if not df_validated.empty:
                     # Validation only allows if all lines are correct
                     # TODO: Apply data masking here
-                    # df_masked = self.data_masker.mask_data(df_processed, source_name)
-                    df_processed = df_validated
+                    df_masked = self.data_masker.mask_sensitive_data(df_validated)
+                    df_processed = df_masked
                     processed_filename = self.gcs_uploader.upload_data(
                         df=df_processed,
                         data_type="processed",

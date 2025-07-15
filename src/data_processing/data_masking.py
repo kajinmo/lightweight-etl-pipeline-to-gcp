@@ -57,7 +57,7 @@ class DataMasker:
         # Define sensitive fields and their masking methods
         sensitive_fields = {
             'ssn': lambda x: self._tokenize_field(x, 'ssn'),
-            'salary': lambda x: self._tokenize_field(x, 'salary'),
+            #'salary': lambda x: self._tokenize_field(x, 'salary'),
             'email': self._mask_email,
             'phone': self._mask_phone,
             'street_address': lambda x: self._tokenize_field(x, 'address')

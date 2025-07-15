@@ -132,6 +132,8 @@ code .
 
 6. Follow the "Step by Step: Create and Use a Service Account on Google Cloud" guide below to configure your GCP
 
+<br>
+
 7. Execution and Testing
 ```bash
 # Start the orchestrator

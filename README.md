@@ -1,5 +1,9 @@
 # Lightweight ETL Pipeline to GCP (without Airflow)
 
+<p align="center">
+  <img src="img/banner.jpg" alt="Banner do projeto" width="100%" />
+</p>
+
 An ETL (Extract, Transform, Load) pipeline that extracts employee data from multiple sources, masks sensitive information, and loads it into Google BigQuery. Designed for environments where Airflow is unavailable (due to permissions, infrastructure constraints, or complexity). It provides a no-frills, dependency-light way to define, schedule, and monitor ETL workflows using Python libraries.
 
 <br>
@@ -44,6 +48,26 @@ project/
 ├── requirements.txt # Python dependencies
 └── README.md # This file
 ```
+<br>
+
+1. Data Ingestion (data_sources/)
+- Multi-source Extraction:
+    - api_extractor.py: fetches data from REST APIs
+    - csv_extractor.py: generates/Exports CSV files
+    - faker_generator.py: generates synthetic datasets for testing
+
+2. Data Storage (storage/)
+- GCS Integration:
+    - gcs_uploader.py: uploads processed data to Google Cloud Storage in parquet format
+
+3. Data Processing (data_processing/)
+- Quality & Privacy:
+    - data_validator.py: validates schema, checks for nulls/duplicates
+    - data_masking.py: anonymizes emails and phones using tokenization
+
+4. Data Loading (big_query/)
+- Analytics Ready:
+    - bigquery_loader.py: automates BigQuery table creation and batch loading with schema detection
 
 <br>
 
@@ -52,7 +76,7 @@ project/
 graph LR
     subgraph orchestration/pipeline_runner.py
     direction LR
-    data_sources --> storage
+    data_sources --> |API/CSV/Fake| storage
     storage --> data_processing
     data_processing --> big_query
     end
@@ -156,3 +180,10 @@ task test
 <br>
 
 6. Create and modify the parameters in the .env file
+
+<br>
+
+7. Iin the bash terminal run the orchestrator with the following command
+```bash
+python -m orchestration.pipeline_runner
+```
